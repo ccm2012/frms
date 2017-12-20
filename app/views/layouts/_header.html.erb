@@ -1,0 +1,29 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to t("project_name"), root_path,
+        class: "color-white navbar-brand project-name" %>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav pull-right">
+        <% if customer_signed_in? %>
+          <li class="dropdown">
+            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+              <%= gravatar_for current_customer, 28 %>
+              <span class="caret color-white"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to t("pages.title.settings"),
+                edit_customer_registration_path %></li>
+              <li><%= link_to t("pages.title.log_out"),
+                destroy_customer_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t("pages.title.sign_in"),
+            new_customer_session_path, class: "color-white btn" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</header>

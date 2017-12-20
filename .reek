@@ -1,3 +1,8 @@
+FeatureEnvy:
+  exclude:
+    - "Customer#from_omniauth"
+    - "Customer#new_with_session"
+
 IrresponsibleModule:
   enabled: false
 
