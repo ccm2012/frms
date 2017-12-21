@@ -17,6 +17,23 @@ gem "jbuilder", "~> 2.5"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "selenium-webdriver"
+  gem "rspec"
+  gem "rspec-rails"
+  gem "rspec-collection_matchers"
+  gem "better_errors"
+  gem "guard-rspec", require: false
+  gem "database_cleaner"
+  gem "brakeman", require: false
+  gem "jshint"
+  gem "bundler-audit"
+  gem "rubocop", "~> 0.35.0", require: false
+  gem "rubocop-checkstyle_formatter", require: false
+  gem "scss_lint_reporter_checkstyle", require: false
+  gem "eslint-rails"
+  gem "rails_best_practices"
+  gem "reek"
+  gem "railroady"
+  gem "autoprefixer-rails"
 end
 
 group :development do
@@ -24,6 +41,13 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+end
+
+group :test do
+  gem "rails-controller-testing", "1.0.2"
+  gem "minitest-reporters", "1.1.14"
+  gem "guard"
+  gem "guard-minitest"
 end
 
 group :production do
