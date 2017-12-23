@@ -6,7 +6,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, disabled: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -39,8 +39,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i><%= t "devise.pass_confirm" %></i>
+    <%= f.label :current_password %><i><%= t "devise.need_current_pass" %></i>
     <br />
+    <p><i><%= t "devise.default_pass" %>
+      <strong><%= t "devise.pass_default" %></strong>
+    </i></p>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
@@ -49,10 +52,12 @@
   </div>
 <% end %>
 
-<h3><%= t "devise.cancel_acount" %></h3>
+<% if customer_signed_in? %>
+  <h3><%= t "devise.cancel_acount" %></h3>
 
-<p><%= t "devise.unhappy" %>
-  <%= button_to "Cancel my account", registration_path(resource_name),
-    data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p><%= t "devise.unhappy" %>
+    <%= button_to t("devise.cancel_button"), registration_path(resource_name),
+      data: {confirm: t("devise.sure_you")}, method: :delete %></p>
 
-<%= link_to t("button.back"), :back %>
+  <%= link_to t("button.back"), :back %>
+<% end %>

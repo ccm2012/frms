@@ -26,6 +26,9 @@ RemoveTrailingWhitespaceCheck: { }
 RemoveUnusedMethodsInControllersCheck: {
   except_methods: [
     "PagesController#show"
+  ],
+  ignored_files: [
+    app/controllers/sessions_controller
   ]
 }
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }

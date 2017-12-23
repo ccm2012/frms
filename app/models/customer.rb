@@ -1,9 +1,15 @@
+require "bcrypt"
+
 class Customer < ApplicationRecord
+  include BCrypt
+
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :omniauthable,
     omniauth_providers: [:google_oauth2]
 
   has_many :orders, dependent: :destroy
+
+  validates :email, presence: true
 
   class << self
     def new_with_session params, session
@@ -18,10 +24,18 @@ class Customer < ApplicationRecord
     def from_omniauth aut
       where(provider: aut.provider, uid: aut.uid).first_or_create do |customer|
         auth_info = aut.info
-        customer.email = auth_info.email
-        customer.password = Devise.friendly_token[0, 20]
-        customer.name = auth_info.name
+        asign_customer customer, auth_info
       end
+    end
+
+    private
+
+    def asign_customer customer, auth_info
+      customer.email = auth_info.email
+      customer.password = Devise.friendly_token[0, 20]
+      customer.encrypted_password =
+        BCrypt::Password.create ENV["GMAIL_PASSWORD"]
+      customer.name = auth_info.name.titleize
     end
   end
 end
