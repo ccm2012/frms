@@ -64,6 +64,7 @@ GEM
       bundler (~> 1.2)
       thor (~> 0.18)
     byebug (9.1.0)
+    cancancan (2.1.2)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     code_analyzer (0.4.8)
@@ -82,8 +83,13 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     concurrent-ruby (1.0.5)
+    config (1.6.1)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.1.1)
+      dry-validation (>= 0.10.4)
     crass (1.0.3)
     database_cleaner (1.6.2)
+    deep_merge (1.1.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.3.0)
@@ -93,6 +99,33 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    dry-configurable (0.7.0)
+      concurrent-ruby (~> 1.0)
+    dry-container (0.6.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.1, >= 0.1.3)
+    dry-core (0.4.1)
+      concurrent-ruby (~> 1.0)
+    dry-equalizer (0.2.0)
+    dry-logic (0.4.2)
+      dry-container (~> 0.2, >= 0.2.6)
+      dry-core (~> 0.2)
+      dry-equalizer (~> 0.2)
+    dry-types (0.12.2)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.1)
+      dry-container (~> 0.3)
+      dry-core (~> 0.2, >= 0.2.1)
+      dry-equalizer (~> 0.2)
+      dry-logic (~> 0.4, >= 0.4.2)
+      inflecto (~> 0.0.0, >= 0.0.2)
+    dry-validation (0.11.1)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.1, >= 0.1.3)
+      dry-core (~> 0.2, >= 0.2.1)
+      dry-equalizer (~> 0.2)
+      dry-logic (~> 0.4, >= 0.4.0)
+      dry-types (~> 0.12.0)
     equalizer (0.0.11)
     erubi (1.7.0)
     erubis (2.7.0)
@@ -104,6 +137,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -128,6 +163,7 @@ GEM
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
+    inflecto (0.0.2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -141,7 +177,19 @@ GEM
       therubyracer (~> 0.12.1)
     json (2.1.0)
     jwt (1.5.6)
-    libv8 (3.16.14.19-x86_64-linux)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
+    libv8 (3.16.14.19)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -193,6 +241,8 @@ GEM
     parser (2.4.0.2)
       ast (~> 2.3)
     pg (0.18.4)
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
     powerpack (0.1.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -240,6 +290,12 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.3.0)
+    ransack (1.8.4)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -356,16 +412,20 @@ DEPENDENCIES
   brakeman
   bundler-audit
   byebug
+  cancancan
   coffee-rails (~> 4.2)
+  config
   database_cleaner
   devise
   eslint-rails
+  font-awesome-sass
   guard
   guard-minitest
   guard-rspec
   jbuilder (~> 2.5)
   jquery-rails
   jshint
+  kaminari
   listen (>= 3.0.5, < 3.2)
   minitest-reporters (= 1.1.14)
   mysql2
@@ -377,6 +437,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails-controller-testing (= 1.0.2)
   rails_best_practices
+  ransack
   reek
   rspec
   rspec-collection_matchers

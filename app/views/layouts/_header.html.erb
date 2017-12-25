@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-header">
       <%= link_to t("project_name"), root_path,
-        class: "color-white navbar-brand project-name" %>
+        class: "color-white navbar-brand" %>
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav pull-right">
@@ -20,6 +20,8 @@
             </ul>
           </li>
         <% elsif staff_signed_in? %>
+          <%= link_to t("pages.title.staffs"), staffs_path,
+            class: "color-white btn" %>
           <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
               <%= gravatar_for current_staff, 28 %>
               <span class="caret color-white"></span>

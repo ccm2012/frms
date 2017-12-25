@@ -25,3 +25,23 @@ en:
     fail_signin: "Unvalid user and password. Check again"
     cancel_button: "Cancel my account"
     sure_you: "Are you sure?"
+  submit: "Submit"
+  pages:
+    form_contain: "Your submition contains %{param} errors."
+    title:
+      default: "RestaurantManagement"
+      home: "Home"
+      manage_staff: "Manage Staffs"
+      staffs: "Staffs"
+  staffs:
+    new_user: "New Staff"
+    success_create: "Success create new staff"
+    success_update: "Success update staff %{param}"
+    success_destroy: "Success destroy staff %{param}"
+    fail_update: "Failed to update staff %{param}"
+    email: "Email"
+    name: "Name"
+    phone_num: "Phone Num"
+    staff: "Staff"
+    option: "Option"
+    update: "Update"

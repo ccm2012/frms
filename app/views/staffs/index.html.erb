@@ -1,0 +1,52 @@
+<% provide :title, t("pages.title.manage_staff") %>
+<h1 class="text-center"><%= t "pages.title.manage_staff" %></h1>
+<div class="bloc">
+  <% if can? :create, Staff %>
+    <%= link_to t("pages.create_user"), new_staff_path,
+      class: "btn btn-primary pull-right" %>
+  <% end %>
+
+  <%= search_form_for staff_search do |f| %>
+    <%= f.select :staff_role_cont, @roles_filter, selected: params[:q] ?
+      Staff.staff_roles.key(params[:q][:staff_role_cont]) :
+      @roles_filter.keys.last %>
+    <%= f.submit %>
+  <% end %>
+  <table id="staffs", class="staffs">
+    <thead>
+      <tr>
+        <th><%= t ".email" %></th>
+        <th><%= t ".name" %></th>
+        <th><%= t ".phone_num" %></th>
+        <th><%= t ".staff" %></th>
+        <th><%= t ".option" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= paginate @staffs %>
+      <% if @staffs.any? %>
+        <% @staffs.each do |staff| %>
+          <tr>
+            <td><%= staff.email %></td>
+            <td><%= staff.name %></td>
+            <td><%= staff.phone_num %></td>
+            <td><%= collection_select "value", "key-#{staff.id}", @roles,
+              :last, :first, selected: staff.staff_role %>
+            </td>
+            <td>
+              <% if !current_staff.equal_staff?(staff) &&
+                can?(:manage, Staff) %>
+                <button type="button" data-id="<%= staff.id %>" class="update">
+                  <%= t ".update" %></button>
+                <%= link_to staff_path(staff), method: :delete,
+                  data: {confirm: t("devise.sure_you")}  do %>
+                  <button class="fa fa-times"></button>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

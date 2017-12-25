@@ -25,13 +25,21 @@ RemoveEmptyHelpersCheck: { }
 RemoveTrailingWhitespaceCheck: { }
 RemoveUnusedMethodsInControllersCheck: {
   except_methods: [
-    "PagesController#show"
+    "PagesController#show",
+    "StaffsController#show",
+    "StaffsController#update",
+    "StaffsController#staff_params",
+    "ApplicationController#current_ability"
   ],
   ignored_files: [
     app/controllers/sessions_controller
   ]
 }
-RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
+RemoveUnusedMethodsInHelpersCheck: {
+  except_methods: [
+    "ApplicationHelper#staff_search"
+  ]
+}
 RemoveUnusedMethodsInModelsCheck: {
   except_methods: [
     "Customer#new_with_session",
