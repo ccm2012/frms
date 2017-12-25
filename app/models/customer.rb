@@ -2,6 +2,9 @@ require "bcrypt"
 
 class Customer < ApplicationRecord
   include BCrypt
+  ATTRIBUTE_PARAMS = %i(name email phone_num password
+    password_confirmation).freeze
+  NO_PASS_ATTRIBUTE_PARAMS = %i(name email phone_num).freeze
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :omniauthable,
@@ -10,6 +13,8 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   validates :email, presence: true
+  validates :name, presence: true
+  validates :phone_num, presence: true
 
   class << self
     def new_with_session params, session

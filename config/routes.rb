@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   root to: "pages#show"
 
   resources :staffs, except: :show
+  resources :customers, path: "user"
 end

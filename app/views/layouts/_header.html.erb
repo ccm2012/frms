@@ -20,6 +20,10 @@
             </ul>
           </li>
         <% elsif staff_signed_in? %>
+          <% if can? :index, Customer %>
+            <%= link_to t("pages.title.customers"), customers_path,
+              class: "color-white btn" %>
+          <% end %>
           <%= link_to t("pages.title.staffs"), staffs_path,
             class: "color-white btn" %>
           <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">

@@ -1,0 +1,58 @@
+<% provide :title, t("pages.title.manage_customer") %>
+<h1 class="text-center"><%= t "pages.title.manage_customer" %></h1>
+
+<div class="bloc">
+  <% if can? :create, Customer %>
+    <%= link_to t("pages.create_user"), new_customer_path,
+      class: "btn btn-primary pull-right" %>
+  <% end %>
+
+  <%= search_form_for @search do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email_cont, placeholder: t("customers.search_email"),
+      class: "search" %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name_cont, placeholder: t("customers.search_name"),
+      class: "search" %>
+
+    <%= f.label :phone_num %>
+    <%= f.text_field :phone_num_eq, placeholder: t("customers.search_phone"),
+      class: "search" %>
+
+    <%= f.submit %>
+    <%= link_to t("button.reset"), customers_path, class: "btn btn-default" %>
+  <% end %>
+  <table id="customers", class="tables" ">
+    <thead>
+      <tr>
+        <th><%= t ".email" %></th>
+        <th><%= t ".name" %></th>
+        <th><%= t ".phone_num" %></th>
+        <th><%= t ".option" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= paginate @customers %>
+      <% if @customers.any? %>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= link_to customer.email, customer %></td>
+            <td><%= link_to customer.name, customer %></td>
+            <td><%= link_to customer.phone_num, customer %></td>
+            <td>
+              <%= link_to edit_customer_path(customer) do %>
+                <button class="fa fa-pencil-square-o"></button>
+              <% end %>
+              <%= link_to customer_path(customer), method: :delete,
+                data: {confirm: "Are you sure?"}  do %>
+                <button class="fa fa-times"></button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+      <%= paginate @customers %>
+    </tbody>
+  </table>
+</div>

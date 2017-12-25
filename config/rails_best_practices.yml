@@ -29,7 +29,8 @@ RemoveUnusedMethodsInControllersCheck: {
     "StaffsController#show",
     "StaffsController#update",
     "StaffsController#staff_params",
-    "ApplicationController#current_ability"
+    "ApplicationController#current_ability",
+    "CustomersController#edit"
   ],
   ignored_files: [
     app/controllers/sessions_controller
