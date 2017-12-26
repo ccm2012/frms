@@ -1,0 +1,13 @@
+<div class="container">
+  <p><%= t ".show_name", param: @dish.name %></p>
+  <p><%= @dish.price %></p>
+  <p><%= @dish.available %></p>
+  <span><%= t ".belong_to"%></span>
+  <% if @dish.categories.any? %>
+    <% @dish.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  <% end %>
+  <p><%= @dish.description %></p>
+  </br>
+</div>

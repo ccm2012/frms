@@ -1,0 +1,35 @@
+<%= form_for dish do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+
+  <%= f.label :active %>
+  <%= f.check_box :available %>
+  </br>
+  </br>
+  <%= label_tag t("dishes.choose_category") %>
+  <div id="las"></div>
+  </br>
+  <div>
+    <% if categories.any? %>
+      <% categories.each do |category| %>
+        <div class="col-md-4">
+          <%= check_box_tag category.name ,category.id,
+            dish.categories.include?(category), class: "category" %>
+          <%= label_tag category.name.to_sym %>
+        </div>
+      <% end %>
+    <% end %>
+  <div>
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block",
+    id: "submit" %>
+  <%= button_tag t("button.reset"), type: :reset %>
+  <%= link_to t("button.back"), :back, class: "btn btn-default" %>
+<% end %>
