@@ -1,0 +1,9 @@
+<% provide :title, t("edit_category") %>
+<% provide :button_text, t("Update") %>
+
+<h1><%= t "update_category"%></h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render "form_category", category: @category, dishes: @dishes %>
+  </div>
+</div>

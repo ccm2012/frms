@@ -1,0 +1,14 @@
+<div class="container">
+  <p><%= @category.name %></p>
+  <p><%= @category.description %></p>
+  <% if @category.dishes.any? %>
+    <% @category.dishes.each do |dish| %>
+      <span><%= dish.name %></span>
+      <%= link_to deletedish_category_path(@category, dish: dish.id) do %>
+        <button class="fa fa-times"></button></br>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= link_to t("categories.edit_path"), edit_category_path(@category) %>
+  <%= link_to t("categories.categories_path"), categories_path %>
+</div>

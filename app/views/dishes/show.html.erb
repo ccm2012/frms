@@ -10,4 +10,6 @@
   <% end %>
   <p><%= @dish.description %></p>
   </br>
+  <%= link_to t("dishes.edit_path"), edit_dish_path(@dish) %>
+  <%= link_to t("dishes.dishes_path"), dishes_path %>
 </div>

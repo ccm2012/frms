@@ -8,6 +8,7 @@ class Ability
         can :manage, Staff
         can :manage, Customer
         can :manage, Dish
+        can :manage, Category
       elsif user.chef?
         chef_role
       else
@@ -21,6 +22,7 @@ class Ability
   def chef_role
     can :read, Staff
     can :manage, Dish
+    can :manage, Category
   end
 
   def receptionist_role

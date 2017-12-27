@@ -40,6 +40,8 @@ en:
       manage_customer: "Manage Customers"
       manage_dishes: "Manage Dishes"
       dishes: "Dishes"
+      manage_categories: "Manage Categories"
+      categories: "Categories"
   staffs:
     new_user: "New Staff"
     success_create: "Success create new staff"
@@ -86,4 +88,14 @@ en:
     name_search: "Search by name or description"
     priceup_search: "Price equal or bigger"
     pricedown_search: "Price lower or equal"
-
+    edit_path: "Edit dish"
+    dishes_path: "View all dishes"
+  categories:
+    success_create: "Success create new category"
+    success_update: "Success create update category %{param}"
+    success_destroy: "Success destroy category %{param}"
+    fail_update: "Failed to change category %{param}"
+    fail_delete_dish: "Failed to delete dish from this category"
+    choose_dishes: "Choose dishes:"
+    edit_path: "Edit category"
+    categories_path: "View all categories"
