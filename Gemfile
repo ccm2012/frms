@@ -16,7 +16,6 @@ gem "jbuilder", "~> 2.5"
 gem "bootstrap-sass"
 gem "jquery-rails"
 gem "devise"
-gem "devise_custom_authenticatable"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 

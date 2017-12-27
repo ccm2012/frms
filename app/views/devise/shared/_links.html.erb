@@ -6,7 +6,8 @@
   <%= link_to t("button.signup"), new_registration_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.recoverable? && controller_name != "passwords" && controller_name != "registrations" %>
+<%- if devise_mapping.recoverable? && controller_name != "passwords" &&
+  controller_name != "registrations" %>
   <%= link_to t("button.forgot_pass"),
     new_password_path(resource_name) %><br />
 <% end -%>
@@ -16,14 +17,12 @@
     new_confirmation_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != "unlocks" %>
+<%- if devise_mapping.lockable? &&
+  resource_class.unlock_strategy_enabled?(:email) &&
+  controller_name != "unlocks" %>
   <%= link_to t("button.receive_lock"), new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to t("devise.signin_via",
-      param: OmniAuth::Utils.camelize(provider)),
-      omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
+<%- Customer.omniauth_providers.each do |provider| %>
+  <%= link_to "Sign in via #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
 <% end -%>
