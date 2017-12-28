@@ -17,4 +17,8 @@ class Category < ApplicationRecord
   def delete_dish dish
     dishes.delete dish
   end
+
+  def count_dishes_in dishs
+    dishs.category_dishes(self).count
+  end
 end

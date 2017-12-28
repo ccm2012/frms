@@ -1,0 +1,3 @@
+$('#flash').html('<%= content_tag :div, flash.now[:info], class: "alert alert-info" %>');
+$('.badge').replaceWith('<%= j render("layouts/cart", size: current_order.sum_order_dishes) %>');
+$('#price-<%= @order_dish.id %>').html('<%= label_tag "", t("cart.update_cart", param: (@order_dish.quantity * @order_dish.price)), id: "price-#{@order_dish.id}" %>')

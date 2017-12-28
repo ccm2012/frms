@@ -25,4 +25,6 @@ Rails.application.routes.draw do
       get "/deletedish", to: "categories#delete_dish"
     end
   end
+  resource :cart, only: :show
+  resources :order_dishes, only: [:create, :update, :destroy]
 end

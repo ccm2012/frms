@@ -1,0 +1,2 @@
+$("#flash").html('<%= content_tag :div, flash.now[:info], class: "alert alert-info" %>');
+$('.badge').replaceWith('<%= j render("layouts/cart", size: current_order.sum_order_dishes) %>');

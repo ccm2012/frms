@@ -7,6 +7,10 @@
     <div id="navbar">
       <ul class="nav navbar-nav pull-right">
         <% if customer_signed_in? %>
+          <%= link_to cart_path do %>
+            <button class="fa fa-shopping-cart"></button>
+            <%= render "layouts/cart", size: current_order.sum_order_dishes %>
+          <% end %>
           <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
             <%= current_customer.picture.url ? cl_image_tag(
                 current_customer.picture.url, size: "28x28") :
@@ -47,6 +51,10 @@
               logout_path, method: :delete %></li>
           </ul>
         <% else %>
+          <%= link_to cart_path, class: "float-left" do %>
+            <button class="fa fa-shopping-cart"></button>
+            <%= render "layouts/cart", size: current_order.sum_order_dishes %>
+          <% end %>
           <li><%= link_to t("pages.title.sign_in"),
             new_customer_session_path, class: "color-white btn" %></li>
         <% end %>

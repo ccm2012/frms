@@ -1,3 +1,4 @@
 max_length:
   table: 5
   cust: 6
+  home: 12

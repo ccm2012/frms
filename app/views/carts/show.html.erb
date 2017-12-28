@@ -1,0 +1,28 @@
+<% if @order_dishes.size == 0 %>
+  <p class="text-center">
+    <%= t "cart.no_item_yet" %><%= link_to "go back", root_path %>
+    <%= t "cart.yet_next" %>
+  </p>
+<% else %>
+  <% @order_dishes.each do |order_dish| %>
+    <div class="bloc-order col-md-9 col-md-offset-1">
+      <div class="col-md-11">
+        <%= form_for order_dish, remote: true do |f| %>
+          <%= f.hidden_field :dish_id, value: order_dish.dish.id %>
+          <%= f.hidden_field :price, value: order_dish.price %>
+
+          <%= f.label "", order_dish.dish.name, class: "col-md-5" %>
+          <%= f.number_field :quantity, value: order_dish.quantity, min: 1,
+            required: true, class: "col-md-2" %>
+          <%= f.submit t("button.update"), class: "float-right btn btn-info" %>
+          <%= label_tag "",t("cart.update_cart",
+            param: (order_dish.quantity * order_dish.price)),
+            id: "price-#{order_dish.id}", class: "col-md-3" %>
+        <% end %>
+      </div>
+      <%= link_to t("button.delete"), order_dish_path(order_dish),
+        method: :delete, data: {confirm: t("devise.sure_you")},
+        class: "float-left btn btn-danger" %>
+    </div>
+  <% end %>
+<% end %>

@@ -8,6 +8,10 @@ UncommunicativeMethodName:
   exclude:
     - "Customers::OmniauthCallbacksController#google_oauth2"
 
+TooManyInstanceVariables:
+  exclude:
+    - "PagesController"
+
 IrresponsibleModule:
   enabled: false
 

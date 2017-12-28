@@ -1,9 +1,43 @@
 <% provide :title, t("pages.title.home") %>
-<div class="jumbotron">
-  <div class="container">
-    <h1><%= t "pages.mailer.welcome" %></h1>
-    <p><%= t "pages.to_register" %></p>
-    <p><%= t "pages.register" %>
-    </p>
-  </div>
+
+<%= search_form_for @search, url: root_path do |f| %>
+  <%= f.text_field :name_cont, placeholder: t("cart.search_dish") %>
+  <%= f.submit "Search", id: "commit" %>
+<% end %>
+
+<ul class="ul-home">
+  <%= label_tag :all, t("cart.all_dish", param: @dishes.count),
+    class: "btn btn-success direct active li-home", id: "nil" %>
+  <% @categories.each do |category| %>
+    <% if @count_dishes[category.name] > 0 %>
+      <%= label_tag :category, t("pages.name_category", param: category.name,
+        rampa: @count_dishes[category.name]),
+        class: "btn btn-success direct li-home", id: "#{category.id}" %>
+    <% end %>
+  <% end %>
+</ul>
+
+<div class="container">
+  <%= paginate @dishes %>
+  <% @dishes.each do |dish| %>
+    <div class="col-md-3 to-direct <%= dish.load_string_categories %>">
+      <% if dish.image.url %>
+        <%= cl_image_tag dish.image.url, size: "260x300" %>
+      <% else %>
+        <%= image_tag t("dish_url"), size: "260x300" %>
+      <% end %>
+      <span class="text-center"><%= dish.name %></span>
+      <span class="text-center"><%= dish.price %></span></br>
+      <%= form_for @order_dish, remote: true do |f| %>
+        <%= f.hidden_field :dish_id, value: dish.id %>
+        <%= f.hidden_field :price, value: dish.price %>
+
+        <%= f.number_field :quantity, value: 1, min: 1, required: true %>
+
+        <%= f.button "", type: :submit,
+          class: "btn btn-default fa fa-cart-plus" %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= paginate @dishes %>
 </div>

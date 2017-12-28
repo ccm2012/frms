@@ -12,6 +12,7 @@ class Customer < ApplicationRecord
 
   has_many :orders, dependent: :destroy
 
+  mount_uploader :picture, PictureUploader
   validates :email, presence: true
   validates :name, presence: true
   validates :phone_num, presence: true

@@ -4,6 +4,7 @@ en:
   project_name: "Restaurant Management"
   hello: "Hello world"
   button:
+    delete: "Delete"
     update: "Update"
     back: "Back"
     reset: "Reset"
@@ -44,6 +45,7 @@ en:
       dishes: "Dishes"
       manage_categories: "Manage Categories"
       categories: "Categories"
+    name_category: "%{param} (%{rampa})"
   staffs:
     new_user: "New Staff"
     success_create: "Success create new staff"
@@ -101,3 +103,12 @@ en:
     choose_dishes: "Choose dishes:"
     edit_path: "Edit category"
     categories_path: "View all categories"
+  cart:
+    add_to_cart: "Success add %{param} dish %{rampa} to your cart"
+    update_cart: "Total price: %{param}"
+    success_destroy: "Success destroy dish %{param}"
+    success_update: "Success update quantity dish %{param}"
+    no_item_yet: "There are no items in your shopping cart. Please "
+    yet_next: "and add some items to your cart."
+    search_dish: "Search by Dish's name"
+    all_dish: "All (%{param})"

@@ -32,7 +32,8 @@ RemoveUnusedMethodsInControllersCheck: {
     "ApplicationController#current_ability",
     "CustomersController#edit",
     "DishesController#show",
-    "CategoriesController#show"
+    "CategoriesController#show",
+    "CartsController#show"
   ],
   ignored_files: [
     app/controllers/sessions_controller

@@ -11,6 +11,8 @@ $blue-medium: #167f92;
 $blue-hard: #024457;
 $blo: #d9e4e6;
 $blo-light: #eaf3f3;
+$orangered: #ff4500;
+$gray-light: #d9d9d9;
 
 .down-header {
   margin-top: 70px;
@@ -124,6 +126,14 @@ $blo-light: #eaf3f3;
   padding: 10px;
 }
 
+.bloc-order {
+  background-color: $gray-light;
+  border: 1px solid $alto;
+  box-shadow: 0 5px 10px $silver-chalice;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
 .dish-category {
   display: inline;
   margin: 3px 7px;
@@ -131,4 +141,32 @@ $blo-light: #eaf3f3;
 
 .option-column {
   width: 150px;
+}
+
+.flat-column-4 {
+  float: left;
+}
+
+.float-left {
+  float: left;
+}
+
+.ul-home {
+  margin: auto;
+  padding: 30px 0;
+  width: 70%;
+}
+
+.li-home {
+  margin: 5px 0;
+  padding: 5px 20px;
+}
+
+.badge {
+  background-color: $orangered;
+  margin: 23px 0 0 -10px;
+}
+
+.float-right {
+  float: right;
 }
