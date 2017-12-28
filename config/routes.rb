@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :staffs, skip: [:registrations, :sessions],
     controller:{sessions: "sessions"}
     as :staff do
-      get "staffs/edit" => "devise/registrations#edit",
+      get "staffsdevise/edit" => "devise/registrations#edit",
         as: "edit_staff_registration"
-      put "staffs" => "devise/registrations#update",
+      put "staffsdevise" => "devise/registrations#update",
         as: "staff_registration"
     end
 
@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
   end
   root to: "pages#show"
+
+  resources :staffs, except: :show
 end
