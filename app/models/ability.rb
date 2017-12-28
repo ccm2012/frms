@@ -6,6 +6,7 @@ class Ability
     when Staff
       if user.administrator?
         can :manage, Staff
+        can :manage, Customer
       elsif user.chef?
         chef_role
       else
@@ -22,5 +23,6 @@ class Ability
 
   def receptionist_role
     can :read, Staff
+    can :manage, Customer
   end
 end

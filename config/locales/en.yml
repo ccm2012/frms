@@ -1,8 +1,10 @@
 en:
+  project_name: "Restaurant Management"
   hello: "Hello world"
   button:
     update: "Update"
     back: "Back"
+    reset: "Reset"
     signup: "Sign up"
     login: "Log in"
     forgot_pass: "Forgot your password?"
@@ -28,11 +30,13 @@ en:
   submit: "Submit"
   pages:
     form_contain: "Your submition contains %{param} errors."
+    rescue_cacncan: "You are not authorized to access this page"
     title:
       default: "RestaurantManagement"
       home: "Home"
       manage_staff: "Manage Staffs"
       staffs: "Staffs"
+      customers: "Customers"
   staffs:
     new_user: "New Staff"
     success_create: "Success create new staff"
@@ -45,3 +49,17 @@ en:
     staff: "Staff"
     option: "Option"
     update: "Update"
+    manage_customer: "Manage Customers"
+  customers:
+    new_user: "New Customer"
+    success_create: "Success create new customer"
+    success_update: "Success create update customer %{param}"
+    success_destroy: "Success destroy customer %{param}"
+    fail_update: "Failed to update customer %{param}"
+    email: "Email"
+    name: "Name"
+    phone_num: "Phone Num"
+    option: "Option"
+    search_email: "Search by email"
+    search_name: "Search by name"
+    search_phone: "Search by phone number"
