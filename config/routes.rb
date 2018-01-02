@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :staffs, except: :show
   resources :customers, path: "user"
+  resources :dishes
 end

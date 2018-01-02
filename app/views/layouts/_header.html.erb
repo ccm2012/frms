@@ -20,6 +20,10 @@
             </ul>
           </li>
         <% elsif staff_signed_in? %>
+          <% if can? :index, Dish %>
+              <%= link_to t("pages.title.dishes"), dishes_path,
+                class: "color-white btn" %>
+            <% end %>
           <% if can? :index, Customer %>
             <%= link_to t("pages.title.customers"), customers_path,
               class: "color-white btn" %>

@@ -1,0 +1,67 @@
+<% provide :title, t("pages.title.manage_dishes") %>
+<h1 class="text-center"><%= t "pages.title.manage_dishes" %></h1>
+
+<div class="bloc">
+  <% if can? :create, Dish %>
+    <%= link_to t("pages.create_dish"), new_dish_path,
+      class: "btn btn-primary pull-right" %>
+  <% end %>
+  <%= search_form_for @search do |f| %>
+    <%= f.text_field :name_or_description_cont,
+      placeholder: t("dishes.name_search") %>
+
+    <%= f.label :price_range %>
+    <%= f.number_field :price_gteq, placeholder: t("dishes.priceup_search") %>
+    <%= f.number_field :price_lteq,
+      placeholder: t("dishes.pricedown_search") %>
+
+    <%= f.label :status %>
+    <%= f.select :available_eq,
+      {t(".all") => nil, t(".active") => 1, t(".not") => 0},
+      selected: params[:q] ? params[:q][:available_eq] : nil %>
+    <%= f.submit %>
+    <%= link_to "Reset", dishes_path, class: "btn btn-default" %>
+  <% end %>
+
+  <table id="dishes", class="tables">
+    <thead>
+      <tr>
+        <th><%= t ".name" %></th>
+        <th><%= t ".price" %></th>
+        <th><%= t ".status" %></th>
+        <th><%= t ".option" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= paginate @dishes %>
+      <% if @dishes.any? %>
+        <% @dishes.each do |dish| %>
+          <tr>
+            <td><%= link_to dish.name, dish %></td>
+            <td><%= link_to dish.price, dish %></td>
+            <td><%= link_to(dish) do %>
+                <% if dish.available %>
+                  <%= label_tag :true, t(".true"),
+                    class: "btn btn-success disabled" %>
+                <% else %>
+                  <%= label_tag :false, t(".false"),
+                    class: "btn btn-danger disabled" %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_dish_path(dish) do %>
+                <button class="fa fa-pencil-square-o"></button>
+              <% end %>
+              <%= link_to dish_path(dish), method: :delete,
+                data: {confirm: t("devise.sure_you")}  do %>
+                <button class="fa fa-times"></button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+      <%= paginate @dishes %>
+    </tbody>
+  </table>
+</div>
