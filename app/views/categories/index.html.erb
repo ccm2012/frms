@@ -1,0 +1,43 @@
+<% provide :title, t("pages.title.manage_categories") %>
+<h1 class="text-center"><%= t "pages.title.manage_categories" %></h1>
+
+<div class="bloc col-md-offset-2 col-md-8">
+  <% if can? :create, Category %>
+    <%= link_to t("pages.create_category"), new_category_path,
+      class: "btn btn-primary pull-right" %>
+  <% end %>
+  <%= search_form_for @search do |f| %>
+    <%= f.text_field :name_or_description_cont,
+      placeholder: t("dishes.name_search") %>
+    <%= f.submit %>
+    <%= link_to t("button.reset"), categories_path, class: "btn btn-default" %>
+  <% end %>
+
+  <table id="categories", class="tables">
+    <thead>
+      <tr>
+        <th><%= t "staffs.name" %></th>
+        <th class="option-column"><%= t "staffs.option" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= paginate @categories %>
+      <% if @categories.any? %>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= link_to category.name, category %></td>
+            <td>
+              <%= link_to edit_category_path(category) do %>
+                <button class="fa fa-pencil-square-o"></button>
+              <% end %>
+              <%= link_to category, method: :delete,
+                data: {confirm: t("devise.sure_you")}  do %>
+                <button class="fa fa-times"></button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

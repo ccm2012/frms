@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   resources :staffs, except: :show
   resources :customers, path: "user"
   resources :dishes
+  resources :categories do
+    member do
+      get "/deletedish", to: "categories#delete_dish"
+    end
+  end
 end

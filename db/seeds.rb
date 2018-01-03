@@ -10,3 +10,12 @@
     available: available
   )
 end
+
+5.times do |n|
+  name = Faker::Food.dish
+  description = Faker::Food.ingredient
+  Category.create!(
+    name: name,
+    description: description
+  )
+end

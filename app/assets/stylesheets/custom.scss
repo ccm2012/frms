@@ -125,5 +125,10 @@ $blo-light: #eaf3f3;
 }
 
 .dish-category {
+  display: inline;
   margin: 3px 7px;
+}
+
+.option-column {
+  width: 150px;
 }

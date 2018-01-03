@@ -1,0 +1,28 @@
+<%= form_for category do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+  </br>
+  <%= label_tag t("categories.choose_dishes") %>
+  <div id="las"></div>
+  </br>
+  <div>
+    <% if dishes.any? %>
+      <% dishes.each do |dish| %>
+        <div class="col-md-4">
+          <%= check_box_tag dish.name , dish.id,
+            category.dishes.include?(dish), class: "dish" %>
+          <%= label_tag dish.name.to_sym %>
+        </div>
+      <% end %>
+    <% end %>
+  <div>
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block",
+    id: "submit" %>
+  <%= button_tag t("button.reset"), type: :reset %>
+  <%= link_to t("button.back"), :back, class: "btn btn-default" %>
+<% end %>
