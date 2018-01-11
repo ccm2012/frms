@@ -7,8 +7,8 @@ class CategoriesController < ApplicationController
 
   def index
     @search = Category.ransack params[:q]
-    @categories = search.result.page(params[:page]).
-      per Settings.max_length.cust
+    @categories = search.result.page(params[:page])
+                  .per Settings.max_length.cust
   end
 
   def new; end

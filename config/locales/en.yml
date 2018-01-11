@@ -1,4 +1,6 @@
 en:
+  user_url: "user.png"
+  dish_url: "dish.jpg"
   project_name: "Restaurant Management"
   hello: "Hello world"
   button:
