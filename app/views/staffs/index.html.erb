@@ -28,7 +28,11 @@
       <% if @staffs.any? %>
         <% @staffs.each do |staff| %>
           <tr>
-            <td><%= staff.email %></td>
+            <td>
+              <%= staff.email %>
+              <%= staff.picture.url ? cl_image_tag(staff.picture.url,
+                size: "28x28") : image_tag(t("user_url"), size: "28x28") %>
+            </td>
             <td><%= staff.name %></td>
             <td><%= staff.phone_num %></td>
             <td><%= collection_select "value", "key-#{staff.id}", @roles,

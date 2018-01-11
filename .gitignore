@@ -20,6 +20,7 @@
 
 /config/secrets.yml
 /config/database.yml
+/config/cloudinary.yml
 
 /.framgia-ci-reports
 /.framgia-ci-result.temp.yml

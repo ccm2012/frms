@@ -37,7 +37,11 @@
       <% if @customers.any? %>
         <% @customers.each do |customer| %>
           <tr>
-            <td><%= link_to customer.email, customer %></td>
+            <td>
+              <%= customer.picture.url ? cl_image_tag(customer.picture.url,
+                size: "28x28") : image_tag(t("user_url"), size: "28x28") %>
+              <%= link_to customer.email, customer %>
+            </td>
             <td><%= link_to customer.name, customer %></td>
             <td><%= link_to customer.phone_num, customer %></td>
             <td>
