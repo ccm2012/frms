@@ -1,10 +1,11 @@
 class Dish < ApplicationRecord
-  ATTRIBUTE_PARAMS = %i(name price description available).freeze
+  ATTRIBUTE_PARAMS = %i(name price description available image).freeze
 
   has_many :category_dishes
   has_many :categories, through: :category_dishes, dependent: :destroy
   has_many :order_dishes
 
+  mount_uploader :image, PictureUploader
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true
 

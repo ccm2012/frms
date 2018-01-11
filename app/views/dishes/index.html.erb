@@ -37,9 +37,13 @@
       <% if @dishes.any? %>
         <% @dishes.each do |dish| %>
           <tr>
-            <td><%= link_to dish.name, dish %></td>
+            <td>
+              <%= dish.picture.url ? cl_image_tag(dish.picture.url,
+                size: "28x28") : image_tag(t("dish_url"), size: "40x50") %>
+              <%= link_to dish.name, dish %>
+            </td>
             <td><%= link_to dish.price, dish %></td>
-            <td><%= link_to(dish) do %>
+            <td><%= link_to dish do %>
                 <% if dish.available %>
                   <%= label_tag :true, t(".true"),
                     class: "btn btn-success disabled" %>
@@ -47,7 +51,7 @@
                   <%= label_tag :false, t(".false"),
                     class: "btn btn-danger disabled" %>
                 <% end %>
-              <% end %>
+              <% end%>
             </td>
             <td>
               <%= link_to edit_dish_path(dish) do %>

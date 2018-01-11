@@ -1,4 +1,6 @@
 <div class="container">
+  <%= @dish.image.url ? cl_image_tag(@dish.image.url) :
+    image_tag(t "dish_url")%>
   <p><%= t ".show_name", param: @dish.name %></p>
   <p><%= @dish.price %></p>
   <p><%= @dish.available %></p>

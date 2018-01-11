@@ -24,6 +24,9 @@ gem "kaminari"
 gem "ransack"
 gem "font-awesome-sass"
 gem "faker"
+gem "carrierwave"
+gem "mini_magick"
+gem "cloudinary"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

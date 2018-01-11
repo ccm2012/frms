@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: restaurantmanagement
+  api_key: '139876368511239'
+  api_secret: 52Er1GAzChKd6zrrMglTNnHjRJw
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: restaurantmanagement
+  api_key: '139876368511239'
+  api_secret: 52Er1GAzChKd6zrrMglTNnHjRJw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: restaurantmanagement
+  api_key: '139876368511239'
+  api_secret: 52Er1GAzChKd6zrrMglTNnHjRJw
+  enhance_image_tag: true
+  static_image_support: false
