@@ -6,6 +6,7 @@ class Staff < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
     :validatable
+  mount_uploader :picture, PictureUploader
 
   has_many :change_orders, dependent: :destroy
 
